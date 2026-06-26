@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>JIT OPERATIONS LMS</title>
+
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo">
+
+    <img
+    src="img/logo-jit.png"
+    alt="JIT Logistics">
+
+    </div>
+
+    <div class="menu">
+
+        <button class="menu-btn active">
+            🏠 Inicio
+        </button>
+
+        <button class="menu-btn">
+            🚚 Operación 3PL
+        </button>
+
+        <button class="menu-btn">
+            📦 WMS
+        </button>
+
+        <button class="menu-btn">
+            🚛 Transporte
+        </button>
+
+        <button class="menu-btn">
+            📊 KPI
+        </button>
+
+        <button class="menu-btn">
+            🎓 LMS
+        </button>
+
+        <button class="menu-btn">
+            📁 Evidencias
+        </button>
+
+        <button
+        class="menu-btn"
+        id="btn-sgid">
+
+        📋 SGID
+
+        </button>
+
+    </div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main">
+
+    <div id="sgid-view"
+         style="display:none;">
+    </div>
+
+    <div id="process-canvas"
+         style="display:none;">
+    </div>
+
+    <div id="lms-view"
+     style="display:none;">
+
+    <!-- HEADER -->
+
+    <div class="header">
+
+        <div>
+            <h1>
+                JIT OPERATIONS LMS
+            </h1>
+
+            <p>
+                Operación Logística Integral 3PL
+            </p>
+        </div>
+
+        <div class="status">
+            🔴 ONLINE
+        </div>
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+     <!-- ACTIVITIES GRID -->
+      <!-- MOBILE SELECT -->
+
+<div class="mobile-selector">
+
+<select
+id="activity-select"
+onchange="mobileActivitySelect()">
+
+</select>
+
+</div>
+
+<div class="activities-grid"
+id="activities-grid">
+
+</div>
+
+    <div class="dashboard">
+
+        <div class="card">
+
+            <div class="card-number">
+                16
+            </div>
+
+            <div class="card-title">
+                Actividades
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-number">
+                98%
+            </div>
+
+            <div class="card-title">
+                OTIF
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-number">
+                24/7
+            </div>
+
+            <div class="card-title">
+                Monitoreo
+            </div>
+
+        </div>
+
+        <div class="card">
+
+            <div class="card-number">
+                WMS
+            </div>
+
+            <div class="card-title">
+                Integración
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- ACTIVIDAD -->
+
+    <!-- PROGRESS -->
+
+<div class="progress-container">
+
+    <div class="progress-info">
+
+        <span>
+            Progreso Capacitación
+        </span>
+
+        <span id="progress-text">
+            0%
+        </span>
+
+    </div>
+
+    <div class="progress-bar">
+
+        <div
+        class="progress-fill"
+        id="progress-fill">
+
+        </div>
+
+    </div>
+
+</div>
+
+<div id="lms-op3pl-view"
+     style="display:none;">
+
+    <div class="activity-container">
+
+        <!-- LEFT -->
+
+        <div class="activity-left">
+
+    <div class="activity-number">
+
+        <span id="activity-number">
+
+            01
+
+        </span>
+
+    </div>
+
+    <div class="activity-title">
+
+        <span id="activity-name">
+
+            Recepción de Programación desde Producción
+
+        </span>
+
+    </div>
+
+    <div class="info-mini">
+
+        <h3>
+
+            DESCRIPCIÓN
+
+        </h3>
+
+        <p id="activity-description"></p>
+
+    </div>
+
+    <div class="info-mini">
+
+        <h3>
+
+            RESPONSABLE
+
+        </h3>
+
+        <p id="activity-responsible"></p>
+
+    </div>
+
+    <div class="info-mini">
+
+        <h3>
+
+            CONTROL
+
+        </h3>
+
+        <p id="activity-control"></p>
+
+    </div>
+
+    <button
+    class="start-btn"
+    onclick="startActivity()">
+
+        ▶ Iniciar Capacitación
+
+    </button>
+
+    <div class="nav-buttons">
+
+        <button
+        onclick="previousActivity()">
+
+            ◀ Anterior
+
+        </button>
+
+        <button
+        onclick="nextActivity()">
+
+            Siguiente ▶
+
+        </button>
+
+    </div>
+
+</div>
+
+        <!-- CENTER -->
+
+<div class="activity-center">
+
+    <div id="steps-container">
+
+    </div>
+
+</div>
+        <!-- RIGHT -->
+
+<div class="activity-right">
+
+    <!-- MULTIMEDIA -->
+
+    <div class="info-box">
+
+        <div class="impact-box">
+
+<h2 class="risk-main-title">
+
+GESTIÓN DE RIESGO Y EVALUACIÓN
+
+</h2>
+
+
+<h3 class="risk-sub-title">
+    NIVEL DE RIESGO
+</h3>
+
+<div id="risk-level"></div>
+
+
+<h3>
+
+IMPACTO OPERACIONAL
+
+</h3>
+
+<div id="risk-description"></div>
+
+
+<h3>
+
+RESPONSABILIDAD
+
+</h3>
+
+<div id="responsibility-box"></div>
+
+
+<h3>
+
+COMPETENCIAS REQUERIDAS
+
+</h3>
+
+<div
+id="competencies"
+class="competencies-grid">
+
+</div>
+
+
+<h3>
+
+EVALUACIÓN
+
+</h3>
+
+
+<div class="evaluation-metrics">
+
+    <div>
+
+        <span>Preguntas</span>
+
+        <strong
+        id="eval-questions">
+
+        </strong>
+
+    </div>
+
+    <div>
+
+        <span>Aprobación</span>
+
+        <strong
+        id="eval-score">
+
+        </strong>
+
+    </div>
+
+    <div>
+
+        <span>Intentos</span>
+
+        <strong
+        id="eval-attempts">
+
+        </strong>
+
+    </div>
+
+</div>
+
+
+<h3>
+
+ESTADO CERTIFICACIÓN
+
+</h3>
+
+<div id="evaluation-status">
+
+🟡 PENDIENTE
+
+</div>
+
+
+<button
+class="evaluation-btn">
+
+📝 PRESENTAR EVALUACIÓN
+
+</button>
+
+    <div id="eval-questions"></div>
+
+    <div id="eval-score"></div>
+
+    <div id="eval-attempts"></div>
+
+    
+    </button>
+
+</div>
+
+</div>
+
+</div>    
+
+</div>
+
+</div> <!-- lms-op3pl-view -->
+
+<script src="core/process-template.js"></script>
+
+<script src="processes/operacion-3pl.js"></script>
+
+<script src="core/process-map.js"></script>
+
+<script src="core/process-registry.js"></script>
+
+<script src="core/sgid.js"></script>
+
+<script src="core/process-canvas.js"></script>
+
+<script src="activities.js"></script>
+
+<script src="dashboard.js"></script>
+
+<script src="script.js"></script>
+
+</body>
+</html>
